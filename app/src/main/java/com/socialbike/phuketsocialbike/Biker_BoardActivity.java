@@ -52,6 +52,7 @@ public class Biker_BoardActivity extends ActionBarActivity {
 
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        
 
         // nav drawer icons from resources
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
