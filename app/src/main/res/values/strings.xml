@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">PhuketSocialBike</string>
+
+    //login
+    <string name="head">Phuket Social Bike</string>
+    <string name="emergen_button">EMERGENCY MODE</string>
+    <string name="userId_txt">User ID  </string>
+    <string name="pass_txt">Password  </string>
+    <string name="forget_txt">forgot password  </string>
+    <string name="registration_txt">registration</string>
+    <string name="login_button">Login</string>
+    <string name="signFB_button">Sign in FACEBOOK</string>
+    <string name="app_id">1552924621651602</string>
+
+    //regis
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="accountName_txt">Account Name</string>
+    <string name="accountPassword_txt">Account Password</string>
+    <string name="FirtName_txt">Firt Name</string>
+    <string name="lastName_txt">Last Name</string>
+    <string name="gender_txt">Gender</string>
+    <string name="female_radio">Female</string>
+    <string name="male_radio">Male</string>
+    <string name="age_txt">Age</string>
+    <string name="submit_button">SUBMIT</string>
+
+    //bikerboard
+    <string name="title_activity_biker_board">Biker Board</string>
+    <string name="bikerBoard">Biker Board</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_manu">ManuActivity</string>
+    <string name="title_activity_biker__board">Biker_BoardActivity</string>
+    <string name="post_btn">post</string>
+    <string name="timeEvent">time</string>
+    <string name="title_activity_maps_activitycreat">MapActivitycreat</string>
+    <string name="eventNews_txt">Event news</string>
+
+    //trip introduce
+    <string name="trip_introduce">Trip</string>
+    <string name="trip_introduce_txt">ทริปแนะนำ</string>
+
+    //create trip
+    <string name="create_trip">Create Trip</string>
+    <string name="New_trip">New Trip</string>
+    <string name="name_trip">ชื่อทริป</string>
+    <string name="route">เส้นทาง</string>
+
+    //Weather check
+    <string name="weather_check">Weather</string>
+
+    //emergency
+    <string name="emergency">Emergency</string>
+
+
+    //slide manu
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Profile</item>
+        <item >Shop</item>
+        <item >Beginner</item>
+        <item >Emergency call</item>
+        <item >Contact</item>
+        <item >Log out</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_action</item>
+        <item>@drawable/ic_action</item>
+        <item>@drawable/ic_action</item>
+        <item>@drawable/ic_action</item>
+        <item>@drawable/ic_action</item>
+        <item>@drawable/ic_action</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_trip__introduce">Trip_IntroduceActivity</string>
+    <string name="title_activity_create_trip">CreateTripActivity</string>
+    <string name="title_activity_weather">WeatherActivity</string>
+    <string name="title_activity_call">CallActivity</string>
+    <string name="title_activity_emergency">EmergencyActivity</string>
+
+</resources>

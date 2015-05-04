@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Button EditBox Font Color-->
+    <color name="color_main">#3299f9</color>
+    <color name="color_font_hint">#c8dffd</color>
+    <color name="color_bg_button">#cccccc</color>
+    <color name="color_font_topic">#194d7d</color>
+
+    <color name="listView_bg">#ffffdd6a</color>
+
+    <!--list Menu color-->
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#ff191d17</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+
+</resources>
