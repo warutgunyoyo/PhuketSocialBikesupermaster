@@ -68,6 +68,32 @@ public class Trip_IntroduceActivity extends ActionBarActivity {
                 startActivity(contractBtn);
             }
         });
+
+        Button tr1 = (Button) findViewById(R.id.trip1);
+        tr1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,Trip3.class);
+                startActivity(contractBtn);
+            }
+        });
+        Button tr2 = (Button) findViewById(R.id.trip2);
+        tr2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,Trip2.class);
+                startActivity(contractBtn);
+            }
+        });
+        Button tr3 = (Button) findViewById(R.id.trip3);
+        tr3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,Trip3.class);
+                startActivity(contractBtn);
+            }
+        });
+
     }
 
     private void slide_manu() {

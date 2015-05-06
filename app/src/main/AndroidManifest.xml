@@ -78,6 +78,18 @@
             android:name=".EmergencyActivity"
             android:label="@string/title_activity_emergency" >
         </activity>
+        <activity
+            android:name=".Trip1"
+            android:label="@string/title_activity_trip1" >
+        </activity>
+        <activity
+            android:name=".Trip2"
+            android:label="@string/title_activity_trip2" >
+        </activity>
+        <activity
+            android:name=".Trip3"
+            android:label="@string/title_activity_trip3" >
+        </activity>
     </application>
 
 </manifest>

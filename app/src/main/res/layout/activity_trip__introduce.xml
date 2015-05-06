@@ -75,29 +75,29 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp" />
 
-                <TextView
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="1. PSU - Thalaung R."
-                    android:id="@+id/textView16"
+                    android:id="@+id/trip1"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp" />
 
-                <TextView
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="2. KaThu area"
-                    android:id="@+id/textView17"
+                    android:id="@+id/trip2"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="25dp" />
-                <TextView
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="3. Downtown - Sa-pan-hin"
-                    android:id="@+id/textView18"
+                    android:id="@+id/trip3"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="25dp" />
 
