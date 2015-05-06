@@ -103,13 +103,14 @@
                     android:layout_marginTop="10dp"
                     android:weightSum="1">
 
-                    <ScrollView
+
                         android:layout_width="match_parent"
-                        android:layout_height="193dp">
+                        android:layout_height="166dp"
+                        android:layout_marginBottom="10dp">
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="top|center_horizontal"
                             android:layout_marginTop="10dp"
                             android:background="#ffffdd6a"
@@ -143,7 +144,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="match_parent"
                                 android:text="@string/post_btn"
-                                android:id="@+id/button4"
+                                android:id="@+id/post_btn"
                                 android:layout_gravity="right"
                                 android:layout_marginRight="12dp"
                                 android:layout_marginTop="5dp"
@@ -156,90 +157,98 @@
                                 android:layout_gravity="right"
                                 android:layout_weight="0.16" />-->
                         </LinearLayout>
-                        </ScrollView>
-
-                </LinearLayout>
-            </ScrollView>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="285dp"
-                android:layout_marginTop="250dp"
-                android:longClickable="false">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#e4464343"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp">
 
                     <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="240dp"
-                        android:layout_weight="0.16">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/eventNews_txt"
-                            android:id="@+id/textView11"
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="@string/timeEvent"
-                            android:id="@+id/textView13"
-                            android:layout_marginLeft="20dp" />
-
-                        <ImageButton
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:id="@+id/imageButton5"
-                            android:background="@drawable/share"
-                            android:layout_marginLeft="175dp" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:id="@+id/editText9"
-                        android:layout_gravity="center"
-                        android:background="#ffffff"
-                        android:textColor="@android:color/black"
+                        android:background="#e4464343"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="30dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="New Text"
-                        android:id="@+id/textView14"
-                        android:layout_gravity="right"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="10dp" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp">
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="240dp"
+                            android:layout_weight="0.16">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/eventNews_txt"
+                                android:id="@+id/textView11"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="@string/timeEvent"
+                                android:id="@+id/textView13"
+                                android:layout_marginLeft="20dp" />
+
+                            <ImageButton
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:id="@+id/imageButton5"
+                                android:background="@drawable/share"
+                                android:layout_marginLeft="175dp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/showeventImage"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginLeft="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Text"
+                            android:id="@+id/content_show"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Text"
+                            android:id="@+id/textView14"
+                            android:layout_gravity="right"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="10dp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
             </ScrollView>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/emergen_button"
                 android:id="@+id/emergency_btn"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="520dp" />
+                android:layout_marginTop="560dp" /><![CDATA[
 
+            android:layout_width="match_parent"
+            android:layout_height="285dp"
+            android:layout_marginTop="280dp"
+            android:longClickable="false">
+
+            ]]>
         </FrameLayout>
 
         <!-- Listview to display slider menu -->

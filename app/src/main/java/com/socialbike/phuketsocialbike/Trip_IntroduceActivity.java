@@ -36,6 +36,41 @@ public class Trip_IntroduceActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip__introduce);
+        slide_manu();
+
+
+        //BTN create_trip_btn
+        Button create_trip_btn = (Button) findViewById(R.id.create_trip_btn);
+        create_trip_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,CreateTripActivity.class);
+                startActivity(contractBtn);
+            }
+        });
+
+        //BTN Weather
+        Button weather1 = (Button) findViewById(R.id.weather_btn);
+        weather1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,WeatherActivity.class);
+                startActivity(contractBtn);
+            }
+        });
+        //BTN Emergency
+        Button emergency = (Button) findViewById(R.id.emergency_btn);
+        emergency.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,MapsActivity.class);
+                startActivity(contractBtn);
+            }
+        });
+    }
+
+    private void slide_manu() {
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -72,36 +107,8 @@ public class Trip_IntroduceActivity extends ActionBarActivity {
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
 
-        //BTN create_trip_btn
-        Button create_trip_btn = (Button) findViewById(R.id.create_trip_btn);
-        create_trip_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,CreateTripActivity.class);
-                startActivity(contractBtn);
-            }
-        });
-
-        //BTN Weather
-        Button weather1 = (Button) findViewById(R.id.weather_btn);
-        weather1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,WeatherActivity.class);
-                startActivity(contractBtn);
-            }
-        });
-        //BTN Emergency
-        Button emergency = (Button) findViewById(R.id.emergency_btn);
-        emergency.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,MapsActivity.class);
-                startActivity(contractBtn);
-            }
-        });
     }
+
     /**Slide manu **/
     private class SlideMenuClickListener implements ListView.OnItemClickListener{
         @Override

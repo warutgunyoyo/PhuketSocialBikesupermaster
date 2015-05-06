@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -62,7 +65,27 @@ public class Biker_BoardActivity extends ActionBarActivity {
         emergency_BTN();
         trip_Introduce_BTN();
         slide_manu();
+        post_BTN();
 
+    }
+
+    private void post_BTN() {
+        Button post_btn = (Button) findViewById(R.id.post_btn);
+        final EditText eventNews_edittext   = (EditText)findViewById(R.id.board_editText);
+        final TextView content_show = (TextView) findViewById(R.id.content_show);
+        final ImageView set = (ImageView) findViewById(R.id.showeventImage);
+        final ImageView get = (ImageView) findViewById(R.id.imgBoard_imgView);
+
+        post_btn.setOnClickListener (new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String content = eventNews_edittext.getText().toString();
+                content_show.setText(content);
+                Bitmap bitmap = ((BitmapDrawable)get.getDrawable()).getBitmap();
+                set.setImageBitmap(bitmap);
+            }
+        });
     }
 
     private void slide_manu() {
