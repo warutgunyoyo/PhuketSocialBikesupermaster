@@ -5,9 +5,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -26,6 +28,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import adapter.NavDrawerListAdapter;
@@ -43,13 +48,24 @@ public class Biker_BoardActivity extends ActionBarActivity {
 
     private ImageView img;
     private ImageView img2;
-    private int RESULT_LOAD_IMAGE =1;
-    private int RESULT_LOAD_IMAGE2 =1;
+    private int PICK_IMAGE =1;
+    private int TAKE_PICTURE =1;
+    private File imageFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biker_board);
 
+        pickImage();
+        takeImage();
+        emergency_BTN();
+        trip_Introduce_BTN();
+        slide_manu();
+
+    }
+
+    private void slide_manu() {
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -84,8 +100,10 @@ public class Biker_BoardActivity extends ActionBarActivity {
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-        //BTN Trip Introduce
+    }
+
+    //BTN Trip Introduce
+    private void trip_Introduce_BTN() {
         Button trip_introduce = (Button) findViewById(R.id.trip_introduce_btn);
         trip_introduce.setOnClickListener(new View.OnClickListener() {
 
@@ -95,7 +113,9 @@ public class Biker_BoardActivity extends ActionBarActivity {
                 startActivity(contractBtn);
             }
         });
-        //BTN Emergency
+    }
+    //BTN Emergency
+    private void emergency_BTN() {
         Button emergency = (Button) findViewById(R.id.emergency_btn);
         emergency.setOnClickListener(new View.OnClickListener() {
 
@@ -105,55 +125,51 @@ public class Biker_BoardActivity extends ActionBarActivity {
                 startActivity(contractBtn);
             }
         });
+    }
 
-        //****Take picture
+    //****Take picture
+    private void takeImage() {
         Button picture = (Button)findViewById(R.id.picture_btn);
-        ImageView img = (ImageView) findViewById(R.id.imgBoard_imgView);
         picture.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View v) {
-                                           Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                           startActivityForResult(Intent.createChooser(takePicture,
-                                                   "Take Picture"), RESULT_LOAD_IMAGE2);
-                                       }
-                                   });
+            @Override
+            public void onClick(View v) {
+                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                imageFile = new File(Environment.getExternalStorageDirectory(), "my_image.jpg");
+                takePicture.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+                startActivityForResult(Intent.createChooser(takePicture,
+                        "Take Picture"), TAKE_PICTURE);
+            }
+        });
+/*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                imageFile = new File(Environment.getExternalStorageDirectory(), "my_image.jpg");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+                startActivityForResult(intent, TAKE_PICTURE_SAVE);
+            }
+        });*/
+    }
 
-
-        //****IMAGE Gallery
+    //****IMAGE Gallery
+    private void pickImage() {
         Button pickImg = (Button)findViewById(R.id.pickImage_btn);
-        ImageView img2 = (ImageView) findViewById(R.id.imgBoard_imgView);
         pickImg.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
-                // in onCreate or any event where your want the user to
-                // select a file
-//                Intent intent = new Intent();
-//                intent.setType("image");
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 pickPhoto.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(pickPhoto,
-                        "Select Picture"), RESULT_LOAD_IMAGE);
-
-
-
-
-               /* Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePicture, 0);//zero can be replaced with any action code*/
-
-                /*Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code*/
+                        "Select Picture"), PICK_IMAGE);
             }
         });
-
 
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if (requestCode == requestCode) {
+
             // return from file upload
-            if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            ImageView imageView = (ImageView) findViewById(R.id.imgBoard_imgView);
+
+            if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && null != data) {
                 Uri selectedImage = data.getData();
                 String[] filePathColumn = { MediaStore.Images.Media.DATA };
                 Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
@@ -161,32 +177,17 @@ public class Biker_BoardActivity extends ActionBarActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 String picturePath = cursor.getString(columnIndex);
                 cursor.close();
-                ImageView imageView = (ImageView) findViewById(R.id.imgBoard_imgView);
                 imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
-            }else  if (requestCode == RESULT_LOAD_IMAGE2 && resultCode == RESULT_OK && null != data)
+            }else  if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK && null != data)
             {
-                Uri selectedImage = data.getData();
-                ImageView imageView = (ImageView) findViewById(R.id.imgBoard_imgView);
+                if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK) {
+                    Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
+                    imageView.setImageBitmap(capturedImage);
+                }
+
             }
-        }
 
-      /*  super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case 0:
-                if(resultCode == RESULT_OK){
-                    Uri selectedImage = data.getData();
-                    img.setImageURI(selectedImage);
-                }
-
-                break;
-            case 1:
-                if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data){
-                    Uri selectedImage = data.getData();
-                    img.setImageURI(selectedImage);
-                }
-                break;
-        }*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
