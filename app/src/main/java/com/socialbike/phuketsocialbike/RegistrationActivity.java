@@ -45,7 +45,7 @@ public class RegistrationActivity extends ActionBarActivity {
     AQuery aq;
 
     String s_txtusername, s_txtuserpaaword, s_txtfirstname, s_txtlastname, s_txtgender, s_txtage, s_link;
-     EditText txtusername, txtuserpaaword, txtfirstname, txtlastname, txtgender, txtage;
+    EditText txtusername, txtuserpaaword, txtfirstname, txtlastname, txtgender, txtage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,14 +98,14 @@ public class RegistrationActivity extends ActionBarActivity {
 
 
 
-                s_link = "http://172.19.81.152/Webserproject/regist.php?username=" +txtusername.getText().toString() + "&&userpaaword=" + txtuserpaaword.getText().toString() + "&&firstname=" + txtfirstname.getText().toString() + "&&lastname=" + txtlastname.getText().toString() + "&&gender=" + txtgender.getText().toString() + "&&age=" + txtage.getText().toString();
+                s_link = "http://www.phuketsocailbike.esy.es/regist.php?username=" +txtusername.getText().toString() + "&&userpaaword=" + txtuserpaaword.getText().toString() + "&&firstname=" + txtfirstname.getText().toString() + "&&lastname=" + txtlastname.getText().toString() + "&&gender=" + txtgender.getText().toString() + "&&age=" + txtage.getText().toString();
 
                 aq.progress(progress).ajax(s_link, String.class, new AjaxCallback<String>() {
 
                 });
 
 
-             //  Toast.makeText(getApplication(), s_link, Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplication(), s_link, Toast.LENGTH_LONG).show();
 
             }
         });

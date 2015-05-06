@@ -53,7 +53,17 @@
 
     //emergency
     <string name="emergency">Emergency</string>
+            //call
+    <string name="policecall">ตำรวจ</string>
+    <string name="firecall">ไฟไหม้</string>
+    <string name="carhoscall">รถพยาบาล</string>
+    <string name="brokcall">เจ็บป่วยฉุกเฉิน</string>
+    <string name="savelifecall">หน่วยแพทย์กู้ชีพ</string>
+    <string name="porcall">ปอเต็กติ้ง</string>
+    <string name="katancall">ร่วมกตัญญู
+</string>
 
+    <string name="poroadcall">ตำรวจทางหลวง</string>
 
     //slide manu
     <string name="drawer_open">Slider Menu Opened</string>

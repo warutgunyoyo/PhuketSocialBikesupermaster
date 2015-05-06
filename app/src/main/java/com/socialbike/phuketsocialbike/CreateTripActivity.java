@@ -95,7 +95,7 @@ public class CreateTripActivity extends ActionBarActivity {
         if (mMap != null) {
             // Try to obtain the map from the SupportMapFragment.
             Marker hs1 = mMap.addMarker(new MarkerOptions().position(phuc).title("ภูเก็ต").snippet("จังหวัด"));
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(phuc).zoom(12).build();
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(phuc).zoom(19).build();
 
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
@@ -117,7 +117,7 @@ public class CreateTripActivity extends ActionBarActivity {
 
                 po.add(list.get(i));
             }
-            po.color(Color.RED);
+            po.color(Color.BLUE);
             polyline = mMap.addPolyline(po);
 
         }

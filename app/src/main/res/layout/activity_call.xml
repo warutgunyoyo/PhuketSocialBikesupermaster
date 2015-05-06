@@ -36,11 +36,39 @@
             android:background="#ffffdd6a"
             android:autoText="true"
             android:layout_marginTop="20dp" />
-
-        <ListView
-            android:layout_width="match_parent"
+        //call
+        <Button android:id="@+id/call1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listView"
-            android:layout_marginTop="20dp" />
+            android:text="@string/policecall"/>
+        <Button android:id="@+id/call2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/firecall"/>
+        <Button android:id="@+id/call3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/carhoscall"/>
+        <Button android:id="@+id/call4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/brokcall"/>
+        <Button android:id="@+id/call5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/savelifecall"/>
+        <Button android:id="@+id/call6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/porcall"/>
+        <Button android:id="@+id/call7"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/katancall"/>
+        <Button android:id="@+id/call8"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/poroadcall"/>
+
     </LinearLayout>
 </LinearLayout>
