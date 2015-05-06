@@ -34,6 +34,8 @@
     <string name="post_btn">post</string>
     <string name="timeEvent">time</string>
     <string name="title_activity_maps_activitycreat">MapActivitycreat</string>
+    <string name="txtuser">Wellcome </string>
+    <string name="user">aaaaa </string>
     <string name="eventNews_txt">Event news</string>
 
     //trip introduce
