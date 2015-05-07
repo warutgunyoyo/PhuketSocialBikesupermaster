@@ -1,154 +1,112 @@
 package com.socialbike.phuketsocialbike;
 
-import android.app.Fragment;
-import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import org.w3c.dom.Document;
+
+import app.akexorcist.gdaplibrary.GoogleDirection;
+import app.akexorcist.gdaplibrary.GoogleDirection.OnDirectionResponseListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.NavDrawerListAdapter;
-import bean.NavDrawerItem;
+public class Trip1 extends FragmentActivity {
 
-
-public class Trip1 extends ActionBarActivity {
-    private GoogleMap mMapt1; // Might be null if Google Play services APK is not available.
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     static final LatLng phuc = new LatLng(7.966598, 98.359929);
-    private Polyline polyline;
+    LatLng start = new LatLng(7.979215231780963, 98.331759609282);
+    LatLng end = new LatLng(7.9815865842173865, 98.36380094289);
     private List<LatLng> list;
+    GoogleDirection gd;
+    TextView textProgress;
+    Document mDoc;
+    Button buttonAnimate, buttonRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_trip);
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
-        if (status == ConnectionResult.SUCCESS) {
-            SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            mMapt1 = fm.getMap();
-            mMapt1.setMyLocationEnabled(true);
-            list = new ArrayList<LatLng>();
-            mMapt1.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            mMapt1.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                @Override
-                public void onMapClick(LatLng arg0) {
-                    MarkerOptions m = new MarkerOptions();
-                    m.position(arg0);
-                    m.draggable(true);
-                    m.snippet("กดที่นี่เพื่อลบ");
-                    m.title(arg0.toString());
-                    mMapt1.addMarker(m);
+        setContentView(R.layout.activity_trip1);
+        mMap = ((SupportMapFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.map)).getMap();
 
-                    list.add(arg0);
-                    drawRoute();
-                }
-            });
-            mMapt1.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                @Override
-                public void onInfoWindowClick(Marker arg0) {
-                    arg0.remove();
-                }
-            });
-            mMapt1.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
-                @Override
-                public void onMarkerDragStart(Marker arg0) {
-                    LatLng ll = arg0.getPosition();
-                    arg0.setSnippet(ll.latitude + "," + ll.longitude);
-                    arg0.showInfoWindow();
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(start, 15));
 
-                }
+        gd = new GoogleDirection(this);
+        gd.setOnDirectionResponseListener(new OnDirectionResponseListener() {
+            public void onResponse(String status, Document doc, GoogleDirection gd) {
+                mDoc = doc;
+                mMap.addPolyline(gd.getPolyline(doc, 3, Color.RED));
+                mMap.addMarker(new MarkerOptions().position(start)
+                        .icon(BitmapDescriptorFactory.defaultMarker(
+                                BitmapDescriptorFactory.HUE_GREEN)));
 
-                @Override
-                public void onMarkerDrag(Marker marker) {
+                mMap.addMarker(new MarkerOptions().position(end)
+                        .icon(BitmapDescriptorFactory.defaultMarker(
+                                BitmapDescriptorFactory.HUE_GREEN)));
 
-                }
-
-                @Override
-                public void onMarkerDragEnd(Marker marker) {
-
-                }
-            });
-
-        }
-        mMapt1 = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-        if (mMapt1 != null) {
-            // Try to obtain the map from the SupportMapFragment.
-            Marker hs1 = mMapt1.addMarker(new MarkerOptions().position(phuc).title("ภูเก็ต").snippet("จังหวัด"));
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(phuc).zoom(19).build();
-
-            mMapt1.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-        }
-    }
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-    public void  drawRoute(){
-        PolylineOptions po;
-        if (polyline == null){
-            po = new PolylineOptions();
-
-            for (int i = 0, tam = list.size(); i < tam; i++){
-
-                po.add(list.get(i));
+                buttonAnimate.setVisibility(View.VISIBLE);
             }
-            po.color(Color.BLUE);
-            polyline = mMapt1.addPolyline(po);
+        });
 
-        }
+        gd.setOnAnimateListener(new GoogleDirection.OnAnimateListener() {
+            public void onStart() {
+                textProgress.setVisibility(View.VISIBLE);
+            }
 
-        else {
-            polyline.setPoints(list);
-        }
+            public void onProgress(int progress, int total) {
+                textProgress.setText(progress + " / " + total);
+            }
 
+            public void onFinish() {
+                buttonAnimate.setVisibility(View.VISIBLE);
+                textProgress.setVisibility(View.GONE);
+            }
+        });
+
+        textProgress = (TextView)findViewById(R.id.textProgress);
+        textProgress.setVisibility(View.GONE);
+
+        buttonRequest = (Button)findViewById(R.id.buttonRequest);
+        buttonRequest.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+                gd.setLogging(true);
+                gd.request(start, end, GoogleDirection.MODE_DRIVING);
+            }
+        });
+
+        buttonAnimate = (Button)findViewById(R.id.buttonAnimate);
+        buttonAnimate.setVisibility(View.GONE);
+        buttonAnimate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+                gd.animateDirection(mMap, gd.getDirection(mDoc), GoogleDirection.SPEED_FAST
+                        , true, false, true, false, null, false, true, null);
+            }
+        });
     }
-    /**
-     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
-     * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link #setUpMap()} once when {@link #mMap} is not null.
-     * <p/>
-     * If it isn't installed {@link SupportMapFragment} (and
-     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
-     * install/update the Google Play services APK on their device.
-     * <p/>
-     * A user can return to this FragmentActivity after following the prompt and correctly
-     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
-     * have been completely destroyed during this process (it is likely that it would only be
-     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
-     * method in {@link #onResume()} to guarantee that it will be called.
-     */
 
-
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
-
+    public void onPause() {
+        super.onPause();
+        gd.cancelAnimated();
+    }
 }
+
+

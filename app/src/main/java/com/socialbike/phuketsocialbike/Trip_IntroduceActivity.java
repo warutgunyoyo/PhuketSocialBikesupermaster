@@ -73,7 +73,7 @@ public class Trip_IntroduceActivity extends ActionBarActivity {
         tr1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,Trip3.class);
+                Intent contractBtn = new Intent(Trip_IntroduceActivity.this,Trip1.class);
                 startActivity(contractBtn);
             }
         });
