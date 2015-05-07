@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -91,6 +92,11 @@ public class WeatherActivity extends ActionBarActivity {
             }
         });
 
+        WebView WebViw = (WebView) findViewById(R.id.webView);
+        WebViw.getSettings().setJavaScriptEnabled(true);
+        WebViw.getSettings().setBuiltInZoomControls(true);
+        WebViw.loadUrl("http://www.tmd.go.th/province.php?id=75");
+
     }
 
     /**Slide manu **/
@@ -111,6 +117,8 @@ public class WeatherActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_weather, menu);
+        getMenuInflater().inflate(R.menu.menu_weather, menu);
+
         return true;
     }
 

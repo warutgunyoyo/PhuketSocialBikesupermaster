@@ -68,10 +68,16 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="218dp"
+                android:layout_height="441dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="55dp"
                 android:weightSum="1">
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="519dp"
+                    android:id="@+id/webView"
+                    android:layout_gravity="center_horizontal" />
             </LinearLayout>
 
             <Button

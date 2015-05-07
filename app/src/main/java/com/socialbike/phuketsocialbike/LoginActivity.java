@@ -56,7 +56,7 @@ import java.util.List;
 
 
 public class LoginActivity extends Activity  {
-
+    String s_edlogin,s_edpassword, s_link;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,14 +79,37 @@ public class LoginActivity extends Activity  {
 
         }
 
-
+        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        // txtUsername & txtPassword
+        final EditText txtUser = (EditText)findViewById(R.id.edlogin);
+        final EditText txtPass = (EditText)findViewById(R.id.edloginpassword);
         //BTN Login to BikerBoard
         Button login_btn = (Button) findViewById(R.id.login_btn);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent contractBtn = new Intent(LoginActivity.this, Biker_BoardActivity.class);
-                startActivity(contractBtn);
+
+                String url = "http://phuketsocailbike.esy.es/select_login_chkLogin.php";
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+                params.add(new BasicNameValuePair("edlogin", txtUser.getText().toString()));
+                params.add(new BasicNameValuePair("edloginpassword", txtPass.getText().toString()));
+
+                /*** Default Value ***/
+
+
+                String resultServer = null;
+                JSONObject c;
+
+
+
+                    Intent general = new Intent(LoginActivity.this, Biker_BoardActivity.class);
+                    String Username = txtUser.getText().toString();
+                    general.putExtra("edlogin", Username);
+                    startActivity(general);
+
+
+
             }
         });
         //BTN emergency to BikerBoard

@@ -98,7 +98,7 @@ public class RegistrationActivity extends ActionBarActivity {
 
 
 
-                s_link = "http://www.phuketsocailbike.esy.es/regist.php?username=" +txtusername.getText().toString() + "&&userpaaword=" + txtuserpaaword.getText().toString() + "&&firstname=" + txtfirstname.getText().toString() + "&&lastname=" + txtlastname.getText().toString() + "&&gender=" + txtgender.getText().toString() + "&&age=" + txtage.getText().toString();
+                s_link = "http://phuketsocailbike.esy.es/regist.php?username=" +txtusername.getText().toString() + "&&userpaaword=" + txtuserpaaword.getText().toString() + "&&firstname=" + txtfirstname.getText().toString() + "&&lastname=" + txtlastname.getText().toString() + "&&gender=" + txtgender.getText().toString() + "&&age=" + txtage.getText().toString();
 
                 aq.progress(progress).ajax(s_link, String.class, new AjaxCallback<String>() {
 
