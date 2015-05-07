@@ -33,8 +33,8 @@ public class Trip1 extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     static final LatLng phuc = new LatLng(7.966598, 98.359929);
-    LatLng start = new LatLng(7.979215231780963, 98.331759609282);
-    LatLng end = new LatLng(7.9815865842173865, 98.36380094289);
+    LatLng start = new LatLng(7.898994215847233, 98.351430930197);
+    LatLng end = new LatLng(7.862527582633623, 98.401819914579);
     private List<LatLng> list;
     GoogleDirection gd;
     TextView textProgress;
