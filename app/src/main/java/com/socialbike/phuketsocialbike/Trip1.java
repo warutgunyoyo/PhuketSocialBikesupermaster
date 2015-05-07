@@ -1,5 +1,6 @@
 package com.socialbike.phuketsocialbike;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -43,6 +44,8 @@ public class Trip1 extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip1);
+
+        emergency_BTN();
         mMap = ((SupportMapFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
@@ -99,6 +102,20 @@ public class Trip1 extends FragmentActivity {
                 v.setVisibility(View.GONE);
                 gd.animateDirection(mMap, gd.getDirection(mDoc), GoogleDirection.SPEED_FAST
                         , true, false, true, false, null, false, true, null);
+            }
+        });
+
+
+    }
+    //BTN Emergency
+    private void emergency_BTN() {
+        Button emergency = (Button) findViewById(R.id.emergency_btn);
+        emergency.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent contractBtn = new Intent(Trip1.this,MapsActivity.class);
+                startActivity(contractBtn);
             }
         });
     }

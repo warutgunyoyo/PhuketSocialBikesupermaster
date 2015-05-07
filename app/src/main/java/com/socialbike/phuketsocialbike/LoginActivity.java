@@ -89,7 +89,7 @@ public class LoginActivity extends Activity  {
                 startActivity(contractBtn);
             }
         });
-        //BTN Login to BikerBoard
+        //BTN emergency to BikerBoard
         Button emergency_btn = (Button) findViewById(R.id.emergency_btn);
         emergency_btn.setOnClickListener(new View.OnClickListener() {
             @Override

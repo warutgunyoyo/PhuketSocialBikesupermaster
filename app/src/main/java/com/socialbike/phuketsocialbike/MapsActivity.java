@@ -62,6 +62,7 @@ public class MapsActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
         if (status == ConnectionResult.SUCCESS){
             SupportMapFragment fm =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
